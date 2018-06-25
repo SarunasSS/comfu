@@ -60,6 +60,7 @@ Improvements:
 - run on GPU
 
 Make examples:
+- Conway's game of life
 - PDE
-- Q-learning
+- QL
 
