@@ -53,6 +53,7 @@ Core functionalities:
 - compute f( g( x ) )
 - downscaling to a lower dimension function by slicing on a variable
 - bounds to restrict functions to a certain range of arguments
+- support discrete dimensions. Support mixing continuous and discrete dimensions
 
 Improvements:
 - make approx order different per function
