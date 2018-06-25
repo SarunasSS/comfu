@@ -176,8 +176,7 @@ if True:
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
-    from funcpy import * 
-    
+
     n_inputs = 1
     n_outputs = 1
 
@@ -192,7 +191,7 @@ if __name__ == '__main__':
     plt.plot( x.squeeze(), ( f - g )( x ).squeeze(), label='f-g' )
     plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
     plt.plot( x.squeeze(), f.dx()( x ).squeeze(), label='dfdx' )
-    plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='int f' )
+    plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='integral f' )
     plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
 
     plt.legend()
