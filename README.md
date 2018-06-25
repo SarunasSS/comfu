@@ -5,6 +5,7 @@
 **funcpy** can be used: 
 - To extend discrete domains algorithms to continuous ones
 - Working with unstructured data
+- ...
 
 ## Usage
 First convert all the input functions to the Function objects using the fitting tools in the funcpy.utils module. Once that is done then operate the functions as needed. 
@@ -19,11 +20,11 @@ Currently the following operations on functions are supported for N input N outp
 - upscaling to a higher dimension function with a constant dimmension = adddim
 
 ## Examples
-	tbd
+None yet :) 
 
 ## TODO
 Core functionalities:   
-- N input, N output - translate, scale in argument ie. f( a x - b ) = xadd 
+- translate in argument ie. f( x - b ) = xadd 
 - function fitting 
 - compute f( g( x ) )
 - downscaling to a lower dimension function by slicing on a variable

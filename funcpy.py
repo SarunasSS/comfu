@@ -5,6 +5,7 @@ import itertools
 APPROX_ORDER = 5
 
 class Function():
+    
     def __init__( self, n_inputs=None, n_outputs=None, A=None ):
         self.n_inputs = n_inputs
         self.n_outputs = n_outputs
