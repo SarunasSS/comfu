@@ -20,7 +20,7 @@ Currently the following operations on functions are supported for N input N outp
 - upscaling to a higher dimension function with a constant dimmension = adddim
 
 ## Example
-'''
+```python
 from matplotlib import pyplot as plt
 from funcpy import Function
 
@@ -44,7 +44,7 @@ plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )'
 plt.legend()
 
 plt.show()
-'''
+```
 
 ## TODO
 Core functionalities:   
