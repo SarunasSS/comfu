@@ -1,8 +1,8 @@
-# funcpy: powerful Python function computing toolkit
+# comfu: powerful Python function computing toolkit
 
 ## Description
-**funcpy** is a Python package which provides the tools to create programs using mathematical functions and their operations. The module uses is driven by polynomial functions for which many function operations can be mapped to parameter operations. 
-**funcpy** can be used: 
+**comfu** is a Python package which provides the tools to create programs using mathematical functions and their operations. The module uses is driven by polynomial functions for which many function operations can be mapped to parameter operations. 
+**comfu** can be used: 
 - To extend discrete domains algorithms to continuous ones
 - Working with unstructured data
 - ...
@@ -22,7 +22,7 @@ Currently the following operations on functions are supported for N input N outp
 ## Example
 ```python
 from matplotlib import pyplot as plt
-from funcpy import Function
+from comfu import Function
 
 n_inputs = 1
 n_outputs = 1
