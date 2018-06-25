@@ -5,7 +5,7 @@ import itertools
 APPROX_ORDER = 5
 
 class Function():
-    
+
     def __init__( self, n_inputs=None, n_outputs=None, A=None ):
         self.n_inputs = n_inputs
         self.n_outputs = n_outputs
@@ -176,14 +176,15 @@ if True:
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
-
+    from funcpy import * 
+    
     n_inputs = 1
     n_outputs = 1
 
     f = Function( n_inputs=n_inputs, n_outputs=n_outputs )
     g = Function( n_inputs=n_inputs, n_outputs=n_outputs )
 
-    x = np.sort( np.random.random( [ 10, n_inputs ] ), 0 )
+    x = np.sort( np.random.random( [ 10, n_inputs ] ) - 0.5, 0 )
 
     plt.plot( x.squeeze(), f( x ).squeeze(), label='f' )
     plt.plot( x.squeeze(), g( x ).squeeze(), label='g' )
@@ -192,7 +193,7 @@ if __name__ == '__main__':
     plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
     plt.plot( x.squeeze(), f.dx()( x ).squeeze(), label='dfdx' )
     plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='int f' )
-
+    plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
 
     plt.legend()
 

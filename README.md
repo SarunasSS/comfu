@@ -19,8 +19,32 @@ Currently the following operations on functions are supported for N input N outp
 - argument scale ( xmul )
 - upscaling to a higher dimension function with a constant dimmension = adddim
 
-## Examples
-None yet :) 
+## Example
+'''
+from matplotlib import pyplot as plt
+from funcpy import Function
+
+n_inputs = 1
+n_outputs = 1
+
+f = Function( n_inputs=n_inputs, n_outputs=n_outputs )
+g = Function( n_inputs=n_inputs, n_outputs=n_outputs )
+
+x = np.sort( np.random.random( [ 10, n_inputs ] ) - 0.5, 0 )
+
+plt.plot( x.squeeze(), f( x ).squeeze(), label='f' )
+plt.plot( x.squeeze(), g( x ).squeeze(), label='g' )
+plt.plot( x.squeeze(), ( f + g )( x ).squeeze(), label='f+g' )
+plt.plot( x.squeeze(), ( f - g )( x ).squeeze(), label='f-g' )
+plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
+plt.plot( x.squeeze(), f.dx()( x ).squeeze(), label='dfdx' )
+plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='int f' )
+plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
+
+plt.legend()
+
+plt.show()
+'''
 
 ## TODO
 Core functionalities:   
