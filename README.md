@@ -39,7 +39,7 @@ plt.plot( x.squeeze(), ( f - g )( x ).squeeze(), label='f-g' )
 plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
 plt.plot( x.squeeze(), f.dx()( x ).squeeze(), label='dfdx' )
 plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='integral f' )
-plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
+plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='f( 0.5 * x )' )
 
 plt.legend()
 
