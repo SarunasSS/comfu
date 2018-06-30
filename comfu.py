@@ -49,7 +49,11 @@ class Function():
         else:
             assert self.n_inputs == another.n_inputs
             assert self.n_outputs == another.n_outputs
-            new_A = self.A + another.A
+            new_A = np.zeros( [ max( a, b ) for ( a, b ) in zip( self.A.shape, another.A.shape ) ] )
+            slc = [ slice( None, s ) for s in self.A.shape ]
+            new_A[ slc ] += self.A 
+            slc = [ slice( None, s ) for s in another.A.shape ]
+            new_A[ slc ] += another.A 
 
         return Function( A=new_A )
 
@@ -63,6 +67,7 @@ class Function():
             new_A = self.A - another.A
 
         return Function( A=new_A )
+
 
     def __mul__( self, another ):
         if isinstance( another, numbers.Number ):
@@ -89,6 +94,9 @@ class Function():
 
         return Function( A=new_A )
 
+    def __rmul( self, another ):
+        return self.__mul__( another )
+
     def xmul( self, value, axis ):
 
         degrees = np.arange( self.A.shape[ axis ] )
@@ -98,7 +106,17 @@ class Function():
         
         return Function( A=new_A )
 
+    def xadd( self, value, axis ):
+
+        new_A = np.zeros( self.A.shape )
+        for odim in xrange( self.n_outputs ):
+            A_sub = np.take( self.A, odim, -1 )
+            print A_sub.shape
+            exit()
+        exit()
+
     def addim( self, axis, order=APPROX_ORDER ):
+
 
         new_A_shape = list( self.A.shape )
         new_A_shape.insert( axis, 1 )
@@ -173,6 +191,7 @@ if True:
 
             x_bigger = np.random.random( [ 10, n_inputs + 1 ] )
             f.addim( 1 )( x_bigger )
+
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
