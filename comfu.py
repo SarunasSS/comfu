@@ -14,7 +14,7 @@ class Function():
             self.A = np.random.random( [ APPROX_ORDER ] * n_inputs + [ n_outputs ] ) * 2.0 - 1.0
         else:
             assert ( n_inputs is None or n_inputs == A.ndim-1 ) and ( n_outputs is None or n_outputs == A.shape[ -1 ] )
-            self.A = A
+            self.A = A.astype( np.float )
             self.n_inputs = A.ndim - 1
             self.n_outputs = A.shape[ -1 ]
 
@@ -199,19 +199,24 @@ if __name__ == '__main__':
     n_inputs = 1
     n_outputs = 1
 
-    f = Function( n_inputs=n_inputs, n_outputs=n_outputs )
+    # f = Function( n_inputs=n_inputs, n_outputs=n_outputs )
+    f = Function( A=np.array( [[0],[0],[1]]))
     g = Function( n_inputs=n_inputs, n_outputs=n_outputs )
 
-    x = np.sort( np.random.random( [ 10, n_inputs ] ) - 0.5, 0 )
+    # x = np.sort( np.random.random( [ 10, n_inputs ] ) - 0.5, 0 )
+    x = np.linspace( -1, 1, 1000 )[ :, None ]
 
+    ax = plt.subplot( 111 )
+    ax.set_aspect( 'equal' )
     plt.plot( x.squeeze(), f( x ).squeeze(), label='f' )
-    plt.plot( x.squeeze(), g( x ).squeeze(), label='g' )
-    plt.plot( x.squeeze(), ( f + g )( x ).squeeze(), label='f+g' )
-    plt.plot( x.squeeze(), ( f - g )( x ).squeeze(), label='f-g' )
-    plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
-    plt.plot( x.squeeze(), f.dx()( x ).squeeze(), label='dfdx' )
-    plt.plot( x.squeeze(), f.int()( x ).squeeze(), label='integral f' )
-    plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
+    # plt.plot( x.squeeze(), g( x ).squeeze(), label='g' )
+    # plt.plot( x.squeeze(), ( f + g )( x ).squeeze(), label='f+g' )
+    # plt.plot( x.squeeze(), ( f - g )( x ).squeeze(), label='f-g' )
+    # plt.plot( x.squeeze(), ( f * g )( x ).squeeze(), label='f*g' )
+    plt.plot( x.squeeze(), f.dx( 0 )( x ).squeeze(), label='dfdx' )
+    plt.plot( x.squeeze(), f.int( 0 )( x ).squeeze(), label='integral f' )
+    # plt.plot( x.squeeze(), f.int( 0 ).dx( 0 )( x ).squeeze(), label='integral dfdx' )
+    # plt.plot( x.squeeze(), f.xmul( 0.5, 0 )( x ).squeeze(), label='int f( 0.5 * x )' )
 
     plt.legend()
 
